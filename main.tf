@@ -134,7 +134,7 @@ resource "aws_instance" "ec2b" {
 }
 
 resource "aws_security_group" "ec2b_sg" {
-  name   = "ec2-sg"
+  name   = "ec2b-sg"
   vpc_id = aws_vpc.vpc_b.id
 
   ingress {
