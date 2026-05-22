@@ -93,7 +93,7 @@ resource "aws_vpc_endpoint" "ssmmessages_b" {
 # IAM Role for SSM
 # #################
 resource "aws_iam_role" "ec2_ssm_role" {
-  name = "ec2-ssm-role2"
+  name = "my-ec2-ssm-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
