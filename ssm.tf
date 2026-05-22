@@ -86,7 +86,7 @@ resource "aws_vpc_endpoint" "ssm_b" {
   vpc_endpoint_type = "Interface"
 
   subnet_ids         = [aws_subnet.subnet_b.id]
-  security_group_ids = [aws_security_group.ssm_endpoint_sg_b.id]
+  security_group_ids = [aws_security_group.vpc_endpoint_sg_b.id]
 
   private_dns_enabled = true
 }
@@ -99,7 +99,7 @@ resource "aws_vpc_endpoint" "ec2messages_b" {
   vpc_endpoint_type = "Interface"
 
   subnet_ids         = [aws_subnet.subnet_b.id]
-  security_group_ids = [aws_security_group.ssm_endpoint_sg_b.id]
+  security_group_ids = [aws_security_group.vpc_endpoint_sg_b.id]
 
   private_dns_enabled = true
 }
@@ -112,7 +112,7 @@ resource "aws_vpc_endpoint" "ssmmessages_b" {
   vpc_endpoint_type = "Interface"
 
   subnet_ids         = [aws_subnet.subnet_b.id]
-  security_group_ids = [aws_security_group.ssm_endpoint_sg_b.id]
+  security_group_ids = [aws_security_group.vpc_endpoint_sg_b.id]
 
   private_dns_enabled = true
 }
