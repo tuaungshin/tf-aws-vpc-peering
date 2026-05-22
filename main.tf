@@ -3,6 +3,8 @@
 # =========================
 resource "aws_vpc" "vpc_a" {
   cidr_block = "10.0.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support = true
 
   tags = {
     Name = "vpc-a"
@@ -37,6 +39,8 @@ resource "aws_route_table_association" "rta_a" {
 # =========================
 resource "aws_vpc" "vpc_b" {
   cidr_block = "10.1.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support = true
 
   tags = {
     Name = "vpc-b"
