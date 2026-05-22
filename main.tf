@@ -66,3 +66,51 @@ resource "aws_route_table_association" "rta_b" {
   route_table_id = aws_route_table.rt_b.id
 }
 
+
+# =========================
+# Ec2 on VPC A
+# =========================
+
+data "aws_ami" "amzn-linux-2023-ami" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023.*-x86_64"]
+  }
+}
+
+resource "aws_instance" "ec2a" {
+  ami           = data.aws_ami.amzn-linux-2023-ami.id
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.subnet_a.id
+  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
+  tags = {
+    Name = "ec2 on vpcA"
+  }
+}
+
+# =========================
+# Ec2 on VPC B
+# =========================
+
+data "aws_ami" "amzn-linux-2023-ami" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023.*-x86_64"]
+  }
+}
+
+resource "aws_instance" "ec2b" {
+  ami           = data.aws_ami.amzn-linux-2023-ami.id
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.subnet_b.id
+  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
+  tags = {
+    Name = "ec2 on vpcB"
+  }
+}
