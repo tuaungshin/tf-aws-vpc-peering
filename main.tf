@@ -95,7 +95,7 @@ resource "aws_instance" "ec2a" {
 # Ec2 on VPC B
 # =========================
 
-data "aws_ami" "amzn-linux-2023-ami" {
+data "aws_ami" "amzn-linux-2023-ami-b" {
   most_recent = true
   owners      = ["amazon"]
 
@@ -106,7 +106,7 @@ data "aws_ami" "amzn-linux-2023-ami" {
 }
 
 resource "aws_instance" "ec2b" {
-  ami           = data.aws_ami.amzn-linux-2023-ami.id
+  ami           = data.aws_ami.amzn-linux-2023-ami-b.id
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.subnet_b.id
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
