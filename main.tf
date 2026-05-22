@@ -90,24 +90,12 @@ resource "aws_instance" "ec2a" {
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.subnet_a.id
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
-  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
+  vpc_security_group_ids = [aws_security_group.ec2_a_sg.id]
   tags = {
     Name = "ec2 on vpcA"
   }
 }
 
-resource "aws_security_group" "ec2_sg" {
-  name   = "ec2-sg"
-  vpc_id = aws_vpc.vpc_a.id
-
-  ingress {
-    description = "ICMP from peer VPC"
-    from_port   = -1
-    to_port     = -1
-    protocol    = "icmp"
-    cidr_blocks = ["10.1.0.0/16"]
-  }
-}
 # =========================
 # Ec2 on VPC B
 # =========================
@@ -127,21 +115,8 @@ resource "aws_instance" "ec2b" {
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.subnet_b.id
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
-  vpc_security_group_ids = [aws_security_group.ec2b_sg.id]
+  vpc_security_group_ids = [aws_security_group.ec2_b_sg.id]
   tags = {
     Name = "ec2 on vpcB"
   }
 }
-
-resource "aws_security_group" "ec2b_sg" {
-  name   = "ec2b-sg"
-  vpc_id = aws_vpc.vpc_b.id
-
-  ingress {
-    description = "ICMP from peer VPC"
-    from_port   = -1
-    to_port     = -1
-    protocol    = "icmp"
-    cidr_blocks = ["10.0.0.0/16"]
-  }
-  }
