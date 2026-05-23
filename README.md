@@ -1,4 +1,4 @@
-# AWS Multi-VPC Infrastructure with GitHub OIDC + Terraform
+# AWS 2-VPC Infrastructure with GitHub OIDC + Terraform
 
 ## Overview
 
@@ -22,6 +22,8 @@ The architecture follows modern cloud security best practices:
 ---
 
 # Architecture
+
+![Architecture](images/vpc-peering.png)
 
 ## Components
 
@@ -54,12 +56,6 @@ The architecture follows modern cloud security best practices:
 
 ---
 
-# Architecture Diagram
-
-![Architecture](docs/architecture.png)
-
----
-
 # Features
 
 - Secure GitHub OIDC authentication
@@ -71,26 +67,3 @@ The architecture follows modern cloud security best practices:
 - Infrastructure as Code
 
 ---
-
-# Repository Structure
-
-```bash
-.
-├── .github/
-│   └── workflows/
-│       └── terraform.yml
-├── modules/
-├── environments/
-│   ├── dev/
-│   └── prod/
-├── network/
-├── compute/
-├── security/
-├── backend/
-├── docs/
-│   └── architecture.png
-├── provider.tf
-├── backend.tf
-├── variables.tf
-├── outputs.tf
-└── README.md
